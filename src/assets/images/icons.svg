@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient
+                id="logo_linear"
+                x1="30.0415"
+                y1="-5.95974"
+                x2="-9.63647"
+                y2="27.3866"
+                gradientUnits="userSpaceOnUse"
+        >
+            <stop stop-color="#FA9A42"/>
+            <stop offset="0.973958" stop-color="#FF6C6C"/>
+        </linearGradient>
+
+        <linearGradient
+                id="play-linear"
+                x1="31.5705"
+                y1="-5.95974"
+                x2="-8.53692"
+                y2="30.604"
+                gradientUnits="userSpaceOnUse"
+        >
+            <stop stop-color="#FA9A42"/>
+            <stop offset="0.973958" stop-color="#FF6C6C"/>
+        </linearGradient>
+    </defs>
+
+    <symbol
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+            id="plus">
+        <path d="M12 5v14m-7-7h14"></path>
+    </symbol>
+
+    <symbol
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+            id="close">
+        <path d="M18 6L6 18M6 6l12 12"></path>
+    </symbol>
+</svg>

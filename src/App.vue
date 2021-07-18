@@ -1,26 +1,65 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="canban">
+    <div class="wrapper">
+      <app-card
+          v-for="({ id, title, color}) in getCardConfig"
+          :key="id"
+          :title="title"
+          :color="color"
+          :categoryId="id"
+      ></app-card>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import AppCard from "@/components/AppCard";
+import {mapGetters, mapActions, mapMutations} from "vuex"
 
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      inputIsOpen: false,
+    }
   },
+  mounted() {
+    this.requestCard()
+    if (localStorage.getItem('items')) {
+      this.getStorage(JSON.parse(localStorage.getItem('items')))
+    }
+  },
+  methods: {
+    ...mapMutations(['getStorage']),
+    ...mapActions(['login', 'getCards']),
+
+    async requestCard() {
+      await this.login()
+      await this.getCards()
+    }
+  },
+  computed: {
+    ...mapGetters(["getCardConfig"])
+  },
+  components: {
+    AppCard
+  }
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.canban {
+  padding-top: 50px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  align-items: flex-start;
+  width: 90vw;
 }
 </style>
